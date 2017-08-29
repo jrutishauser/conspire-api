@@ -22,4 +22,17 @@ userController.post = (req, res) => {
     });
 }
 
+userController.getAll = (req, res) => {
+    db.User.find({}, ['username']).then( users => {
+        return res.status(200).json({
+            success: true,
+            data: users
+        });
+    }).catch( err => {
+        return res.status(500).json({
+            message: err
+        });
+    });
+}
+
 export default userController;

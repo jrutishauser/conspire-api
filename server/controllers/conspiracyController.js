@@ -24,4 +24,18 @@ conspiracyController.post = (req, res) => {
     })
 }
 
+conspiracyController.getAll = (req, res) => {
+    db.Conspiracy.find({})
+    .then( conspiracy => {
+        return res.status(200).json({
+            success: true,
+            data: conspiracy
+        });
+    }).catch( err => {
+        return res.status(500).json({
+            message: err
+        });
+    });
+}
+
 export default conspiracyController;
