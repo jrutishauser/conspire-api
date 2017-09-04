@@ -18,7 +18,7 @@ const commentSchema = new Schema({
 const autoPopulateCreator = function(next) {
     this.populate({
         path: '_creator',
-        select: 'username createdAd -_id'
+        select: 'username createdAt -_id'
     });
     next();
 }
