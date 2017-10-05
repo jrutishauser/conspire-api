@@ -27,7 +27,8 @@ conspiracyController.post = (req, res) => {
 conspiracyController.getAll = (req, res) => {
     db.Conspiracy.find({})
     .populate({
-        path: '_comments'
+        path: '_comments',
+        match: { 'isDeleted': false }
     })
     .then( conspiracy => {
         return res.status(200).json({
